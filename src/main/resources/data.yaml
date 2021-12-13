@@ -1,0 +1,9 @@
+testName: YAML Test
+testDescription: >-
+  This is the description of YAML Test
+testDataFile:
+  type: json
+  path: src/test/resources/data/testData
+testEnviroments:
+  - https://localhost:8080/hello
+  - https://localhost:8080/world
