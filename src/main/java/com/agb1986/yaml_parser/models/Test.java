@@ -1,4 +1,4 @@
-package com.agb1986.models;
+package com.agb1986.yaml_parser.models;
 
 import java.util.List;
 import java.util.Map;

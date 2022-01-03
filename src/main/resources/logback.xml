@@ -1,0 +1,39 @@
+<configuration>
+  <appender name="STDOUT_INFO" class="ch.qos.logback.core.ConsoleAppender">
+    <filter class="ch.qos.logback.classic.filter.LevelFilter">
+      <level>INFO</level>
+      <onMatch>ACCEPT</onMatch>
+      <onMismatch>DENY</onMismatch>
+    </filter>
+    <encoder>
+      <pattern>[%green(%level)]::[%d{HH:mm:ss.SSS}]::%msg%n</pattern>
+    </encoder>
+  </appender>
+  <appender name="STDOUT_WARN" class="ch.qos.logback.core.ConsoleAppender">
+    <filter class="ch.qos.logback.classic.filter.LevelFilter">
+      <level>WARN</level>
+      <onMatch>ACCEPT</onMatch>
+      <onMismatch>DENY</onMismatch>
+    </filter>
+    <encoder>
+      <pattern>[%yellow(%level)]::[%d{HH:mm:ss.SSS}]::%msg%n</pattern>
+    </encoder>
+  </appender>
+  <appender name="STDOUT_ERROR" class="ch.qos.logback.core.ConsoleAppender">
+    <filter class="ch.qos.logback.classic.filter.LevelFilter">
+      <level>ERROR</level>
+      <onMatch>ACCEPT</onMatch>
+      <onMismatch>DENY</onMismatch>
+    </filter>
+    <encoder>
+      <pattern>[%red(%level)]::[%d{HH:mm:ss.SSS}]::%msg%n</pattern>
+    </encoder>
+  </appender>
+
+
+  <root level="info">
+    <appender-ref ref="STDOUT_INFO" />
+    <appender-ref ref="STDOUT_WARN" />
+    <appender-ref ref="STDOUT_ERROR" />
+  </root>
+</configuration>
