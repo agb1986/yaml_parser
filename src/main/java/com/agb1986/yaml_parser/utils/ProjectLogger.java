@@ -36,6 +36,6 @@ public class ProjectLogger {
         String errorMessage = JOINER.join(messages);
         errorMessage =
                 JOINER.join(getClassAndMethodCall(), " - ", errorMessage, " - ", e.getMessage());
-        LOGGER.warn(errorMessage);
+        LOGGER.error(errorMessage);
     }
 }

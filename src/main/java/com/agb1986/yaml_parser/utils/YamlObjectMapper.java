@@ -8,15 +8,16 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 
 public class YamlObjectMapper {
-    
-    public static Class<?> parseYamlToModel(File file, Class<?> model) {
+
+    @SuppressWarnings("unchecked")
+    public static <T> T parseYamlToModel(File file, Class<?> model) {
         ObjectMapper objectMapper = new ObjectMapper(new YAMLFactory());
 		objectMapper.findAndRegisterModules();
 
         ProjectLogger.info("Mapping YAML to class: ", model.getSimpleName());
 
         try {
-            return objectMapper.readValue(file, model.getClass());
+            return (T) objectMapper.readValue(file, model);
         } catch (StreamReadException | DatabindException processingException) {
             ProjectLogger.error(processingException, "PROCESSING EXCEPTION");
         } catch (IOException ioException) {
