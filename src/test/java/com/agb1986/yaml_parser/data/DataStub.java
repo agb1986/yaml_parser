@@ -5,7 +5,7 @@ import java.util.Map;
 import lombok.Data;
 
 @Data
-public class TestStub {
+public class DataStub {
     private String testName;
     private String testDescription;
     private Map<String, String> testDataFile;

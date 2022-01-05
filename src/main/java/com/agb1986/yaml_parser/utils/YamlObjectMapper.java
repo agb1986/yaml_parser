@@ -2,15 +2,18 @@ package com.agb1986.yaml_parser.utils;
 
 import java.io.File;
 import java.io.IOException;
-import com.fasterxml.jackson.core.exc.StreamReadException;
 import com.fasterxml.jackson.databind.DatabindException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 
 public class YamlObjectMapper {
 
+    private YamlObjectMapper() {
+        throw new AssertionError("YamlObjectMapper is a utility class cannot be instantiated!");
+    }
+
     @SuppressWarnings("unchecked")
-    public static <T> T parseYamlToModel(File file, Class<?> model) {
+    public static <T> T parseYamlToModel(File file, Class<?> model) throws IOException {
         ObjectMapper objectMapper = new ObjectMapper(new YAMLFactory());
 		objectMapper.findAndRegisterModules();
 
@@ -18,12 +21,12 @@ public class YamlObjectMapper {
 
         try {
             return (T) objectMapper.readValue(file, model);
-        } catch (StreamReadException | DatabindException processingException) {
-            ProjectLogger.error(processingException, "PROCESSING EXCEPTION");
+        } catch (DatabindException databindException) {
+            ProjectLogger.error(databindException, "PROCESSING EXCEPTION");
+            throw databindException;
         } catch (IOException ioException) {
             ProjectLogger.error(ioException, "IO EXCEPTION");
+            throw ioException;
         }
-
-        return null;
     }
 }
