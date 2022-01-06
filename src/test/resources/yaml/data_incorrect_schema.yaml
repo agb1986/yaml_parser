@@ -1,0 +1,4 @@
+negativeTestName: YAML Test Negative
+negativeTestDataFile:
+  type: Negative
+  path: src/test/resources/data/Negative

@@ -19,7 +19,7 @@ class TestYamlObjectMapper {
         ApplicationLogger.info("Postitive Test - parseYamlToModel - Starting");
 
         DataStub testStub = YamlObjectMapper
-                .parseYamlToModel(new File("src/test/resources/data.yaml"), DataStub.class);
+                .parseYamlToModel(new File("src/test/resources/yaml/data.yaml"), DataStub.class);
 
         assertEquals("YAML Test", testStub.getTestName());
         assertThat(testStub.getTestName(), isA(String.class));
@@ -43,7 +43,7 @@ class TestYamlObjectMapper {
     void test_parseYamlToModel_DatabindException() {
         ApplicationLogger.info("Exception Test - parseYamlToModel.IOException - Starting");
         assertThrows(DatabindException.class, () -> YamlObjectMapper
-                .parseYamlToModel(new File("src/test/resources/data_negative.yaml"), DataStub.class));
+                .parseYamlToModel(new File("src/test/resources/yaml/data_negative.yaml"), DataStub.class));
         ApplicationLogger.info("Exception Test - parseYamlToModel.IOException - Ending");
     }
 

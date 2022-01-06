@@ -14,10 +14,10 @@ public class YamlObjectMapper {
 
     @SuppressWarnings("unchecked")
     public static <T> T parseYamlToModel(File file, Class<?> model) throws IOException {
+        ApplicationLogger.info("Mapping YAML to class: ", model.getSimpleName());
+
         ObjectMapper objectMapper = new ObjectMapper(new YAMLFactory());
 		objectMapper.findAndRegisterModules();
-
-        ApplicationLogger.info("Mapping YAML to class: ", model.getSimpleName());
 
         try {
             return (T) objectMapper.readValue(file, model);
