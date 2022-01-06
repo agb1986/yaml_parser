@@ -1,12 +1,16 @@
 package com.agb1986.yaml_parser.utils;
 
 import com.google.common.base.Joiner;
-import org.slf4j.Logger;
+import ch.qos.logback.classic.Logger;
 import org.slf4j.LoggerFactory;
 
-public class ProjectLogger {
-    private static final Logger LOGGER = LoggerFactory.getLogger(ProjectLogger.class);
+public class ApplicationLogger {
+    private static final Logger LOGGER = (Logger) LoggerFactory.getLogger(ApplicationLogger.class);
     private static final Joiner JOINER = Joiner.on("").skipNulls();
+
+    private ApplicationLogger() {
+        throw new AssertionError("ApplicationLogger is a utility class cannot be instantiated!");
+    }
 
     private static String getClassAndMethodCall() {
         StackTraceElement[] stackTraceElement = Thread.currentThread().getStackTrace();

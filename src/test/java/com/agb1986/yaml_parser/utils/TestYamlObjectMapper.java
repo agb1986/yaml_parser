@@ -1,5 +1,6 @@
 package com.agb1986.yaml_parser.utils;
 
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.isA;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -9,14 +10,13 @@ import java.util.List;
 import java.util.Map;
 import com.agb1986.yaml_parser.data.DataStub;
 import com.fasterxml.jackson.databind.DatabindException;
-import static org.hamcrest.MatcherAssert.assertThat;
 import org.junit.jupiter.api.Test;
 
 class TestYamlObjectMapper {
 
     @Test
     void test_parseYamlToModel() throws IOException {
-        ProjectLogger.info("Postitive Test - parseYamlToModel - Starting");
+        ApplicationLogger.info("Postitive Test - parseYamlToModel - Starting");
 
         DataStub testStub = YamlObjectMapper
                 .parseYamlToModel(new File("src/test/resources/data.yaml"), DataStub.class);
@@ -35,23 +35,23 @@ class TestYamlObjectMapper {
                 testStub.getTestEnviroments());
         assertThat(testStub.getTestEnviroments(), isA(List.class));
 
-        ProjectLogger.info("Postitive Test - parseYamlToModel - Ending");
+        ApplicationLogger.info("Postitive Test - parseYamlToModel - Ending");
 
     }
 
     @Test
     void test_parseYamlToModel_DatabindException() {
-        ProjectLogger.info("Exception Test - parseYamlToModel.IOException - Starting");
+        ApplicationLogger.info("Exception Test - parseYamlToModel.IOException - Starting");
         assertThrows(DatabindException.class, () -> YamlObjectMapper
                 .parseYamlToModel(new File("src/test/resources/data_negative.yaml"), DataStub.class));
-        ProjectLogger.info("Exception Test - parseYamlToModel.IOException - Ending");
+        ApplicationLogger.info("Exception Test - parseYamlToModel.IOException - Ending");
     }
 
     @Test
     void test_parseYamlToModel_IOException() {
-        ProjectLogger.info("Exception Test - parseYamlToModel.IOException - Starting");
+        ApplicationLogger.info("Exception Test - parseYamlToModel.IOException - Starting");
         assertThrows(IOException.class, () -> YamlObjectMapper
                 .parseYamlToModel(new File("src/test/resources/null"), DataStub.class));
-        ProjectLogger.info("Exception Test - parseYamlToModel.IOException - Ending");
+        ApplicationLogger.info("Exception Test - parseYamlToModel.IOException - Ending");
     }
 }

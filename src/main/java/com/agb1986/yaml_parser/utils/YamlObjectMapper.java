@@ -17,15 +17,15 @@ public class YamlObjectMapper {
         ObjectMapper objectMapper = new ObjectMapper(new YAMLFactory());
 		objectMapper.findAndRegisterModules();
 
-        ProjectLogger.info("Mapping YAML to class: ", model.getSimpleName());
+        ApplicationLogger.info("Mapping YAML to class: ", model.getSimpleName());
 
         try {
             return (T) objectMapper.readValue(file, model);
         } catch (DatabindException databindException) {
-            ProjectLogger.error(databindException, "PROCESSING EXCEPTION");
+            ApplicationLogger.error(databindException, "PROCESSING EXCEPTION");
             throw databindException;
         } catch (IOException ioException) {
-            ProjectLogger.error(ioException, "IO EXCEPTION");
+            ApplicationLogger.error(ioException, "IO EXCEPTION");
             throw ioException;
         }
     }
