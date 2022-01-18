@@ -2,7 +2,7 @@ package com.agb1986.yaml_parser.utils;
 
 import java.io.File;
 import java.io.IOException;
-import com.fasterxml.jackson.databind.DatabindException;
+import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 
@@ -21,9 +21,9 @@ public class YamlObjectMapper {
 
         try {
             return (T) objectMapper.readValue(file, model);
-        } catch (DatabindException databindException) {
-            ApplicationLogger.error(databindException, "PROCESSING EXCEPTION");
-            throw databindException;
+        } catch (JsonMappingException jsonMappingException) {
+            ApplicationLogger.error(jsonMappingException, "PROCESSING EXCEPTION");
+            throw jsonMappingException;
         } catch (IOException ioException) {
             ApplicationLogger.error(ioException, "IO EXCEPTION");
             throw ioException;

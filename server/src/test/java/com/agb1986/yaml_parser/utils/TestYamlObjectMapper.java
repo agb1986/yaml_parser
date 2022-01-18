@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 import com.agb1986.yaml_parser.data.DataStub;
-import com.fasterxml.jackson.databind.DatabindException;
+import com.fasterxml.jackson.databind.JsonMappingException;
 import org.junit.jupiter.api.Test;
 
 class TestYamlObjectMapper {
@@ -42,7 +42,7 @@ class TestYamlObjectMapper {
     @Test
     void test_parseYamlToModel_DatabindException() {
         ApplicationLogger.info("Exception Test - parseYamlToModel.IOException - Starting");
-        assertThrows(DatabindException.class, () -> YamlObjectMapper
+        assertThrows(JsonMappingException.class, () -> YamlObjectMapper
                 .parseYamlToModel(new File("src/test/resources/yaml/data_negative.yaml"), DataStub.class));
         ApplicationLogger.info("Exception Test - parseYamlToModel.IOException - Ending");
     }

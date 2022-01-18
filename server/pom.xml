@@ -16,7 +16,7 @@
 
         <!-- Dependencies -->
         <lombok.version>1.18.22</lombok.version>
-        <jackson.version>2.13.1</jackson.version>
+        <jackson.version>2.12.6</jackson.version>
         <json-schema.version>1.0.64</json-schema.version>
         <guava.version>31.0.1-jre</guava.version>
         <slf4j.version>2.0.0-alpha4</slf4j.version>
@@ -39,10 +39,6 @@
         <dependency>
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-resteasy</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>io.quarkus</groupId>
-            <artifactId>quarkus-resteasy-jackson</artifactId>
         </dependency>
         <dependency>
             <groupId>io.quarkus</groupId>
@@ -93,7 +89,7 @@
 		</dependency>
 
 		<!-- LOGGING -->
-		<dependency>
+		<!-- <dependency>
 			<groupId>ch.qos.logback</groupId>
 			<artifactId>logback-core</artifactId>
 			<version>${logback.version}</version>
@@ -102,12 +98,16 @@
 			<groupId>ch.qos.logback</groupId>
 			<artifactId>logback-classic</artifactId>
 			<version>${logback.version}</version>
-		</dependency>
+		</dependency> -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
 			<version>${slf4j.version}</version>
 		</dependency>
+        <dependency>
+            <groupId>org.jboss.slf4j</groupId>
+            <artifactId>slf4j-jboss-logmanager</artifactId>
+        </dependency>
 
 		<!-- TESTING -->
 		<dependency>

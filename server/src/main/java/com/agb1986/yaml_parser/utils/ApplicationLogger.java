@@ -1,11 +1,11 @@
 package com.agb1986.yaml_parser.utils;
 
 import com.google.common.base.Joiner;
-import ch.qos.logback.classic.Logger;
+import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class ApplicationLogger {
-    private static final Logger LOGGER = (Logger) LoggerFactory.getLogger(ApplicationLogger.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(ApplicationLogger.class);
     private static final Joiner JOINER = Joiner.on("").skipNulls();
 
     private ApplicationLogger() {
